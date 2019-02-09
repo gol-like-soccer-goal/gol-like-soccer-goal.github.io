@@ -1,0 +1,11 @@
+name: "gols-website"
+output_dir: "."
+navbar:
+  title: "Golnaz Arastoopour Irgens"
+  left:
+    - text: "Pop Music Analysis"
+      href: pop.html
+    - text: "Avocado App"
+      href: avocado.html
+    - text: "Effect Size Simulation"
+      href: effectsizesim.html

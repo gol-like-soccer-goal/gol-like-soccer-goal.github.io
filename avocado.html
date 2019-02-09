@@ -11,7 +11,7 @@
 
 
 
-<title>Data Science is my Hobby</title>
+<title>Avocados are too Popular</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -201,12 +201,42 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Data Science is my Hobby</h1>
+<h1 class="title toc-ignore">Avocados are too Popular</h1>
 
 </div>
 
 
-
+<div id="background" class="section level2">
+<h2>Background</h2>
+</br>
+<p>
+Anyone else think that there is a huge obsession with avocados? Almost every brunch menu has avocado toast. So many restaurants offer fresh-made guacamole at your table. </br> And way too many people have been asking me if I want to add avocado to my burrito/sandwich/salad/pizza (pro tip: it costs extra!). </br> There are even <a href="https://www.ispot.tv/ad/wgAy/avocados-from-mexico-referee" target="_blank">commericials</a> for avocados. </br> I have been wondering why this has been happening. I have a few guesses: government subsidies, improvements in agriculture, a more health concious population, economic benefits for central/south America. </br> So, when I came across a dataset on <a href="https://tinyletter.com/data-is-plural/letters/data-is-plural-2018-09-26-edition", target="_blank">Avocado sales</a>, I had to take a look. </br>
+</p>
+</br>
+<p>
+Here is what the data look like</br>
+</p>
+<pre class="r"><code>avo</code></pre>
+<pre><code>## # A tibble: 197 x 11
+##    Date       AveragePrice TotalVolume SmallHass LargeHass XLHass
+##    &lt;date&gt;            &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+##  1 2015-01-04         0.95   31324278. 12357161. 13624083. 8.44e5
+##  2 2015-01-11         1.01   29063543. 11544811. 12134773. 8.67e5
+##  3 2015-01-18         1.03   29043459. 11858139. 11701948. 8.31e5
+##  4 2015-01-25         1.04   28470311. 12167445. 10734653. 7.68e5
+##  5 2015-02-01         0.89   44655462. 18933038. 18956480. 1.38e6
+##  6 2015-02-08         0.95   32137333. 13308193. 13381348. 7.38e5
+##  7 2015-02-15         1.03   28012521. 12626615.  9783490. 8.46e5
+##  8 2015-02-22         1.02   29936730. 12628562. 11354282. 9.37e5
+##  9 2015-03-01         0.97   32994014. 13282223. 13733124. 1.07e6
+## 10 2015-03-08         1.02   30094699. 13013750. 10973973. 8.34e5
+## # ... with 187 more rows, and 5 more variables: `Total Bags` &lt;dbl&gt;, `Small
+## #   Bags` &lt;dbl&gt;, `Large Bags` &lt;dbl&gt;, `XLarge Bags` &lt;dbl&gt;, Year &lt;int&gt;</code></pre>
+</br> And here is a simple interactive <a href="https://shiny.rstudio.com/", target="_blank">Shiny R</a> App for exploring linear relationships among price, volume, and types of avocados over time.
+<p>
+<iframe src = "https://golnaz.shinyapps.io/avocado_app/" , height = 500, width = 900> </iframe>
+</p>
+</div>
 
 
 
