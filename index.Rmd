@@ -1,9 +1,38 @@
 ---
-title: "Data Science is my Hobby"
+title: ""
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+<p>
+</br>
+
+## Contents
+</br>
+
+### <a href="pop.html">Pop Music Analysis</a>
+My sister is a musician and she claims that happy music sells much better than sad music. I wasn't too sure about that. In this analysis, I examined data from the Billboard Hot-100 Songs from 1964 - 2015 and tried to answer the question: Are sad songs or happy songs more popular?
+</br>
+</br>
+
+### <a href="avocado.html">Avocado App</a>
+I feel like avocados have gained immense popularity in the last decade or so, but I haven't really been able to prove it. So, when I came across a dataset of avocado sales in last few years, I had to take a look. 
+</br>
+</br>
+
+### <a href="effectsize.html">Effect Size Simulation </a>
+After doing some research, I wasn't too happy with the interactive simulations I found to help teach people about effect size. So, I built my own. 
+</br>
+</br>
+
+### Contact
+Golnaz Arastoopour Irgens 
+</br>
+arastoop@gmail.com
+</br>
+
+</p>
+
 

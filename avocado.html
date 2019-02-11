@@ -15,7 +15,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -68,6 +68,7 @@ h6 {
 }
 </style>
 
+<link rel="stylesheet" href="styles.css" type="text/css" />
 
 </head>
 
@@ -102,34 +103,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 64px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 </style>
 
@@ -176,7 +177,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Golnaz Arastoopour Irgens</a>
+      <a class="navbar-brand" href="index.html">Data Science is my Hobby</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -206,15 +207,24 @@ $(document).ready(function () {
 </div>
 
 
+<p></br></p>
 <div id="background" class="section level2">
 <h2>Background</h2>
-</br>
 <p>
-Anyone else think that there is a huge obsession with avocados? Almost every brunch menu has avocado toast. So many restaurants offer fresh-made guacamole at your table. </br> And way too many people have been asking me if I want to add avocado to my burrito/sandwich/salad/pizza (pro tip: it costs extra!). </br> There are even <a href="https://www.ispot.tv/ad/wgAy/avocados-from-mexico-referee" target="_blank">commericials</a> for avocados. </br> I have been wondering why this has been happening. I have a few guesses: government subsidies, improvements in agriculture, a more health concious population, economic benefits for central/south America. </br> So, when I came across a dataset on <a href="https://tinyletter.com/data-is-plural/letters/data-is-plural-2018-09-26-edition", target="_blank">Avocado sales</a>, I had to take a look. </br>
+Avocados are everywhere lately. Almost every brunch menu has avocado toast. Many restaurants offer fresh-made guacamole at your table. And way too many people have been asking me if I want to add avocado to my burrito/sandwich/salad/pizza (pro tip: it costs extra!). There are even <a href="https://www.ispot.tv/ad/wgAy/avocados-from-mexico-referee" target="_blank">commericials</a> for avocados.
 </p>
-</br>
 <p>
-Here is what the data look like</br>
+I have been wondering why this has been happening. I have a few guesses: government subsidies, improvements in agriculture, a more health concious population, economic benefits for central/south America. And I have also been wondering if it’s just me or if avocados have truly gained popularity and if so, what did that gain look like? </br>
+</p>
+<p>
+So, when I came across a dataset on <a href="https://tinyletter.com/data-is-plural/letters/data-is-plural-2018-09-26-edition", target="_blank">Avocado sales</a>, I had to take a look.
+</p>
+<p></br></p>
+</div>
+<div id="initial-look" class="section level2">
+<h2>Initial Look</h2>
+<p>
+Here is what the data look like
 </p>
 <pre class="r"><code>avo</code></pre>
 <pre><code>## # A tibble: 197 x 11
@@ -232,7 +242,13 @@ Here is what the data look like</br>
 ## 10 2015-03-08         1.02   30094699. 13013750. 10973973. 8.34e5
 ## # ... with 187 more rows, and 5 more variables: `Total Bags` &lt;dbl&gt;, `Small
 ## #   Bags` &lt;dbl&gt;, `Large Bags` &lt;dbl&gt;, `XLarge Bags` &lt;dbl&gt;, Year &lt;int&gt;</code></pre>
-</br> And here is a simple interactive <a href="https://shiny.rstudio.com/", target="_blank">Shiny R</a> App for exploring linear relationships among price, volume, and types of avocados over time.
+<p></br></p>
+</div>
+<div id="the-interactive-app" class="section level2">
+<h2>The Interactive App</h2>
+<p>
+And here is a simple interactive <a href="https://shiny.rstudio.com/", target="_blank">Shiny R</a> App for exploring linear relationships among price, volume, and types of avocados over time.
+</p>
 <p>
 <iframe src = "https://golnaz.shinyapps.io/avocado_app/" , height = 500, width = 900> </iframe>
 </p>

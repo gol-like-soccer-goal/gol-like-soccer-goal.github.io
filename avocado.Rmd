@@ -10,23 +10,31 @@ library("tidytext")
 avo <- read_csv("/Users/gai7612/OneDrive/Documents/Data_Science_Project/avocados/avocado_app/avocados_conventional.csv")
 ```
 
-## Background
-</br><p>
-Anyone else think that there is a huge obsession with avocados? Almost every brunch menu has avocado toast. So many restaurants offer fresh-made guacamole at your table. </br>
-  And way too many people have been asking me if I want to add avocado to my burrito/sandwich/salad/pizza (pro tip: it costs extra!). </br>
-  There are even <a href="https://www.ispot.tv/ad/wgAy/avocados-from-mexico-referee" target="_blank">commericials</a> for avocados. </br>
-  I have been wondering why this has been happening. I have a few guesses: government subsidies, improvements in agriculture, a more health concious population, economic benefits for central/south America. </br>
-  So, when I came across a dataset on <a href="https://tinyletter.com/data-is-plural/letters/data-is-plural-2018-09-26-edition", target="_blank">Avocado sales</a>, I had to take a look. </br></p>
 </br>
+
+## Background
 <p>
-Here is what the data look like</br>
+Avocados are everywhere lately. Almost every brunch menu has avocado toast. Many restaurants offer fresh-made guacamole at your table. And way too many people have been asking me if I want to add avocado to my burrito/sandwich/salad/pizza (pro tip: it costs extra!). There are even <a href="https://www.ispot.tv/ad/wgAy/avocados-from-mexico-referee" target="_blank">commericials</a> for avocados.</p> <p>
+I have been wondering why this has been happening. I have a few guesses: government subsidies, improvements in agriculture, a more health concious population, economic benefits for central/south America. And I have also been wondering if it's just me or if avocados have truly gained popularity and if so, what did that gain look like? </br></p>
+<p>
+So, when I came across a dataset on <a href="https://tinyletter.com/data-is-plural/letters/data-is-plural-2018-09-26-edition", target="_blank">Avocado sales</a>, I had to take a look. 
+</p>
+</br>
+
+## Initial Look
+<p>
+Here is what the data look like
 </p>
 
 ```{r}
 avo
 ```
 </br>
+
+## The Interactive App
+<p>
 And here is a simple interactive <a href="https://shiny.rstudio.com/", target="_blank">Shiny R</a> App for exploring linear relationships among price, volume, and types of avocados over time. 
+</p>
 <p>
   <iframe src = "https://golnaz.shinyapps.io/avocado_app/" , height = 500, width = 900>
   </iframe>

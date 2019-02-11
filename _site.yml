@@ -1,7 +1,7 @@
 name: "gols-website"
 output_dir: "."
 navbar:
-  title: "Golnaz Arastoopour Irgens"
+  title: "Data Science is my Hobby"
   left:
     - text: "Pop Music Analysis"
       href: pop.html
@@ -9,3 +9,8 @@ navbar:
       href: avocado.html
     - text: "Effect Size Simulation"
       href: effectsizesim.html
+
+output:
+  html_document:
+    theme: paper
+    css: 'styles.css'

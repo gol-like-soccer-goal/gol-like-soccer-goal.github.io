@@ -4,14 +4,15 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
+</br>
 
 ## Background
 </br>
-My sister, Nassim, is a singer/songwriter who lives in Los Angeles and is much cooler than me. For some reason she values my feedback and sometimes she sends me her songs. </br>
+My sister, Nassim, is a singer/songwriter who lives in Los Angeles. For some reason she values my feedback and sometimes she sends me her songs. </br>
   She recently sent me some of her songs and our conversation went like this (some details have been changed because I don't remember them): </br></br>
 
 <blockquote>
-  Gol: I like your sad songs about heartbreak and other life challenges. </br>
+  Gol: I like your sad songs about heartbreak and all the hard stuff you've gone through much more than the poppy, happy songs. </br>
   Nassim: Most people don't want to hear sad songs--they want happy, upbeat music! That's what sells. </br>
   Gol: Are you sure? </br>
   Nassim: Yes. </br>
@@ -28,18 +29,25 @@ So, I downloaded <a href="https://www.kaggle.com/rakannimer/billboard-lyrics", t
 
 knitr::opts_chunk$set(echo = TRUE)
 
-library("tidyverse")
-library("tidytext")
-library("wordcloud")
-
-lyrics <- read_csv("/Users/gai7612/OneDrive/Documents/Data_Science_Project/pop music analysis/billboard_lyrics_1964-2015.csv")
-
 ```
 
 
 ## Initial Look
 
-</br>This is a tibble (a quick look) at the dataset that has the lyrics from the Billboard Top 100 Songs from 1965 - 2015. For this analysis, I use the "tidyverse" and "tidytext" r packages. 
+</br> I used the following packages: 
+```{r, warning= FALSE, message = FALSE}
+library("tidyverse")
+library("tidytext")
+library("wordcloud")
+library("reshape2")
+```
+
+```{r, include = FALSE}
+lyrics <- read_csv("/Users/gai7612/OneDrive/Documents/Data_Science_Project/pop music analysis/billboard_lyrics_1964-2015.csv")
+```
+
+
+</br>This is a tibble (a quick look) at the dataset that has the lyrics from the Billboard Top 100 Songs from 1965 - 2015.
 ```{r lyrics}
 lyrics
 ```
@@ -65,7 +73,7 @@ lyrics.tidy <- lyrics %>%
 
 
 
-</br>Now for fun, I visualized the words in a hot pink world cloud :) I used the "wordcloud" r package. Not suprisingly, LOVE is a popular concept to write about!
+</br>Now for fun, I visualized the words in a hot pink world cloud :) Not suprisingly, LOVE is a popular concept to write about!
 ```{r wordcloud, message = FALSE}
 lyrics.tidy %>%
 	anti_join(stop_words) %>% # removes stop words (and, the, etc.)
@@ -79,6 +87,9 @@ lyrics.tidy %>%
 </br>Okay, now let's see what sort of emotion is present in these lyrics. 
 Using the <a href="https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html" target="_blank">Bing</a> sentiment word dictionary, I matched each word with it's sentiment score. A higher score means more positive sentiment and a lower score means more negative sentiment. 
 ```{r, message = FALSE}
+
+get_sentiments("bing")
+
 lyrics.sentiment.bing <- lyrics.tidy %>%
 	inner_join(get_sentiments("bing")) %>%
 	count(Song, Year, decade, sentiment) %>%
@@ -86,7 +97,7 @@ lyrics.sentiment.bing <- lyrics.tidy %>%
 	mutate(sentiment = positive - negative) 
 ```
 
-</br>Now, let's see how sentiment has changed throughout the decades. On average, popular song lyrics have gotten more negative over time (although I'm not sure what was going on in the 1960's)
+</br>Now, let's see how sentiment has changed throughout the decades. On average, popular song lyrics have gotten more negative over time (although I'm not sure what was going on in the 1960's...)
 
 ```{r}
 ggplot(lyrics.sentiment.bing, aes(decade, sentiment, fill = decade)) + 
@@ -112,7 +123,7 @@ lyrics.sentiment.bing %>%
 ```
 
 
-</br> Again, for fun, I made a word cloud of positive and negative sentiment words. Again, LOVE is a big word!
+</br> I made another word cloud of positive and negative sentiment words. Again, LOVE is very popular to write about!
 ```{r, message = FALSE}
 lyrics.tidy %>%
 	inner_join(get_sentiments("bing")) %>%
@@ -170,10 +181,10 @@ lyrics.grams %>%
   coord_flip()
 	
 ```
-</br> Even with the condition of no repeating word within trigrams, we can see words are repeated a lot in different orders. Also, some of the most frequently occuring trigrams belonged to just one song. For example, "force don't stop" is the fifth most frequently occuring trigram from the 1970's and is from one Michael Jackson song. So, clearly repeating words are affecting the analysis, but at this point it's unclear how much of an effect it has on the results. 
+</br> Even with the condition of no repeating word within trigrams, we can see words are repeated a lot in different orders. Also, some of the most frequently occuring trigrams belonged to just one song. For example, "force don't stop" is the fifth most frequently occuring trigram from the 1970's and is from one Michael Jackson song. So, clearly repeating words are affecting the analysis, but at this point it's unclear how much of an effect it has on the results. So, a future analysis could identify unique words in each song and rerun the sentiment analysis on only the unique words. 
 
 ## Punchline
-There are plenty more analyses that can be done, but from this, it seems popular songs are generally very positive although there has been a bit of a trend towards more negative since the 1970's.  
+There are plenty more analyses that can be done (for example: we could look beyond lyrics and examine the tempo or minor/major chords to determine sad vs. happy), but from this, it seems popular songs tend to use positive/happy lyrics although there has been a bit of a trend towards more sad/negative since the 1970's.  
 
 
 

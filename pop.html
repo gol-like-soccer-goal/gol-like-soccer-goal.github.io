@@ -15,7 +15,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -68,6 +68,7 @@ h6 {
 }
 </style>
 
+<link rel="stylesheet" href="styles.css" type="text/css" />
 
 </head>
 
@@ -102,34 +103,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 64px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 </style>
 
@@ -176,7 +177,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Golnaz Arastoopour Irgens</a>
+      <a class="navbar-brand" href="index.html">Data Science is my Hobby</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -206,18 +207,24 @@ $(document).ready(function () {
 </div>
 
 
+<p></br></p>
 <div id="background" class="section level2">
 <h2>Background</h2>
-<p></br> My sister, Nassim, is a singer/songwriter who lives in Los Angeles and is much cooler than me. For some reason she values my feedback and sometimes she sends me her songs. </br> She recently sent me some of her songs and our conversation went like this (some details have been changed because I don’t remember them): </br></br></p>
+<p></br> My sister, Nassim, is a singer/songwriter who lives in Los Angeles. For some reason she values my feedback and sometimes she sends me her songs. </br> She recently sent me some of her songs and our conversation went like this (some details have been changed because I don’t remember them): </br></br></p>
 <blockquote>
-Gol: I like your sad songs about heartbreak and other life challenges. </br> Nassim: Most people don’t want to hear sad songs–they want happy, upbeat music! That’s what sells. </br> Gol: Are you sure? </br> Nassim: Yes. </br> Gol: Well, that’s an empirical question. </br> Nassim: What? </br> Gol: I mean that we can probably look to see if that’s true or not based on some data. </br> Nassim: … </br>
+Gol: I like your sad songs about heartbreak and all the hard stuff you’ve gone through much more than the poppy, happy songs. </br> Nassim: Most people don’t want to hear sad songs–they want happy, upbeat music! That’s what sells. </br> Gol: Are you sure? </br> Nassim: Yes. </br> Gol: Well, that’s an empirical question. </br> Nassim: What? </br> Gol: I mean that we can probably look to see if that’s true or not based on some data. </br> Nassim: … </br>
 </blockquote>
 <p></br></p>
 <p>So, I downloaded <a href="https://www.kaggle.com/rakannimer/billboard-lyrics", target="_blank">a dataset</a> that had the Billboard Hot-100 Songs from 1964 - 2015 and tried to answer our question: Are sad songs or happy songs more popular? </br> </br></p>
 </div>
 <div id="initial-look" class="section level2">
 <h2>Initial Look</h2>
-<p></br>This is a tibble (a quick look) at the dataset that has the lyrics from the Billboard Top 100 Songs from 1965 - 2015. For this analysis, I use the “tidyverse” and “tidytext” r packages.</p>
+<p></br> I used the following packages:</p>
+<pre class="r"><code>library(&quot;tidyverse&quot;)
+library(&quot;tidytext&quot;)
+library(&quot;wordcloud&quot;)
+library(&quot;reshape2&quot;)</code></pre>
+<p></br>This is a tibble (a quick look) at the dataset that has the lyrics from the Billboard Top 100 Songs from 1965 - 2015.</p>
 <pre class="r"><code>lyrics</code></pre>
 <pre><code>## # A tibble: 5,100 x 6
 ##     Rank Song            Artist        Year Lyrics                  Source
@@ -248,7 +255,7 @@ Gol: I like your sad songs about heartbreak and other life challenges. </br> Nas
 lyrics.tidy &lt;- lyrics %&gt;%
     na.omit() %&gt;%
     unnest_tokens(word, Lyrics) #splits lyrics into separate words</code></pre>
-<p></br>Now for fun, I visualized the words in a hot pink world cloud :) I used the “wordcloud” r package. Not suprisingly, LOVE is a popular concept to write about!</p>
+<p></br>Now for fun, I visualized the words in a hot pink world cloud :) Not suprisingly, LOVE is a popular concept to write about!</p>
 <pre class="r"><code>lyrics.tidy %&gt;%
     anti_join(stop_words) %&gt;% # removes stop words (and, the, etc.)
     count(word) %&gt;% # gives a count of how many times that word appears in the dataset
@@ -258,21 +265,36 @@ lyrics.tidy &lt;- lyrics %&gt;%
 <div id="sentiment-analysis" class="section level2">
 <h2>Sentiment Analysis</h2>
 <p></br>Okay, now let’s see what sort of emotion is present in these lyrics. Using the <a href="https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html" target="_blank">Bing</a> sentiment word dictionary, I matched each word with it’s sentiment score. A higher score means more positive sentiment and a lower score means more negative sentiment.</p>
+<pre class="r"><code>get_sentiments(&quot;bing&quot;)</code></pre>
+<pre><code>## # A tibble: 6,788 x 2
+##    word        sentiment
+##    &lt;chr&gt;       &lt;chr&gt;    
+##  1 2-faced     negative 
+##  2 2-faces     negative 
+##  3 a+          positive 
+##  4 abnormal    negative 
+##  5 abolish     negative 
+##  6 abominable  negative 
+##  7 abominably  negative 
+##  8 abominate   negative 
+##  9 abomination negative 
+## 10 abort       negative 
+## # ... with 6,778 more rows</code></pre>
 <pre class="r"><code>lyrics.sentiment.bing &lt;- lyrics.tidy %&gt;%
     inner_join(get_sentiments(&quot;bing&quot;)) %&gt;%
     count(Song, Year, decade, sentiment) %&gt;%
     spread(sentiment, n, fill = 0) %&gt;%
     mutate(sentiment = positive - negative) </code></pre>
-<p></br>Now, let’s see how sentiment has changed throughout the decades. On average, popular song lyrics have gotten more negative over time (although I’m not sure what was going on in the 1960’s)</p>
+<p></br>Now, let’s see how sentiment has changed throughout the decades. On average, popular song lyrics have gotten more negative over time (although I’m not sure what was going on in the 1960’s…)</p>
 <pre class="r"><code>ggplot(lyrics.sentiment.bing, aes(decade, sentiment, fill = decade)) + 
   stat_summary(fun.y = &quot;mean&quot;, geom = &quot;bar&quot;)</code></pre>
-<p><img src="pop_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="pop_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p></br>Here is another plot by decade, but this one shows us the sentiment score for every song in each decade. So, here we can see there is more fluctuation in the later decades and definitely more extreme scores in the 2010’s.</p>
 <pre class="r"><code>ggplot(lyrics.sentiment.bing, aes(Song, sentiment, fill = decade)) + 
   geom_col(show.legend = FALSE) + 
   facet_wrap(~decade, ncol = 2, scales =&quot;free_x&quot;) + 
   theme(axis.text.x = element_blank()) </code></pre>
-<p><img src="pop_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="pop_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p></br>I wondered what those really high and low songs from the 2010’s were, so I pulled those out. So, <a href="https://www.azlyrics.com/lyrics/taylorswift/shakeitoff.html" target="_blank">Shake it off</a> by Taylor Swift is the song with the negative spike in the 2010’s graph. And <a href="https://www.azlyrics.com/lyrics/nickiminaj/superbass.html" target="_blank">Super Bass</a> by Nicki Minaj is the song with the positive spike 2010’s graph. One thing to consider with this analysis is how many times a word is repeated in a song. The more often a word is repeated, the higher/lower the sentiment score will be. Hmmm…</p>
 <pre class="r"><code>lyrics.sentiment.bing %&gt;%
   filter(decade == 2010) %&gt;%
@@ -284,13 +306,13 @@ lyrics.tidy &lt;- lyrics %&gt;%
 ## 1 shake it off  2014 2010        123        4      -119
 ## 2 shake it off  2015 2010        123        4      -119
 ## 3 super bass    2011 2010          6      108       102</code></pre>
-<p></br> Again, for fun, I made a word cloud of positive and negative sentiment words. Again, LOVE is a big word!</p>
+<p></br> I made another word cloud of positive and negative sentiment words. Again, LOVE is very popular to write about!</p>
 <pre class="r"><code>lyrics.tidy %&gt;%
     inner_join(get_sentiments(&quot;bing&quot;)) %&gt;%
     count(word, sentiment, sort = TRUE) %&gt;%
     acast(word ~ sentiment, value.var = &quot;n&quot;, fill = 0 ) %&gt;%
     comparison.cloud(colors = c(&quot;purple1&quot; , &quot;royalblue&quot;))</code></pre>
-<p><img src="pop_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="pop_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p></br>It’s easier to visualize the most common positive and negative words in a barchart.</p>
 <pre class="r"><code>bing.word.counts &lt;- lyrics.tidy %&gt;%
     inner_join(get_sentiments(&quot;bing&quot;)) %&gt;%
@@ -306,7 +328,7 @@ lyrics.tidy &lt;- lyrics %&gt;%
     labs(y = &quot;Number of times the word is used&quot;, x = NULL) + coord_flip()
 
 bing.word.counts</code></pre>
-<p><img src="pop_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="pop_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p></br> So, I wondered if I could get any more insight by looking at groups of words together. I decided to look at the most common trigrams per decade. I added a condition where I did not include trigrams with repeated words.</p>
 <pre class="r"><code>lyrics.grams &lt;- lyrics %&gt;%
     mutate_if(is.factor, as.character) %&gt;%
@@ -332,11 +354,11 @@ lyrics.grams %&gt;%
   geom_col(show.legend= FALSE) + facet_wrap(~decade, scales = &quot;free_y&quot;) +    
   scale_x_continuous(breaks = lyrics.grams$row, labels = lyrics.grams$bigram) + 
   coord_flip()</code></pre>
-<p><img src="pop_files/figure-html/unnamed-chunk-7-1.png" width="672" /> </br> Even with the condition of no repeating word within trigrams, we can see words are repeated a lot in different orders. Also, some of the most frequently occuring trigrams belonged to just one song. For example, “force don’t stop” is the fifth most frequently occuring trigram from the 1970’s and is from one Michael Jackson song. So, clearly repeating words are affecting the analysis, but at this point it’s unclear how much of an effect it has on the results.</p>
+<p><img src="pop_files/figure-html/unnamed-chunk-9-1.png" width="672" /> </br> Even with the condition of no repeating word within trigrams, we can see words are repeated a lot in different orders. Also, some of the most frequently occuring trigrams belonged to just one song. For example, “force don’t stop” is the fifth most frequently occuring trigram from the 1970’s and is from one Michael Jackson song. So, clearly repeating words are affecting the analysis, but at this point it’s unclear how much of an effect it has on the results. So, a future analysis could identify unique words in each song and rerun the sentiment analysis on only the unique words.</p>
 </div>
 <div id="punchline" class="section level2">
 <h2>Punchline</h2>
-<p>There are plenty more analyses that can be done, but from this, it seems popular songs are generally very positive although there has been a bit of a trend towards more negative since the 1970’s.</p>
+<p>There are plenty more analyses that can be done (for example: we could look beyond lyrics and examine the tempo or minor/major chords to determine sad vs. happy), but from this, it seems popular songs tend to use positive/happy lyrics although there has been a bit of a trend towards more sad/negative since the 1970’s.</p>
 </div>
 
 

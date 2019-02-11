@@ -6,9 +6,10 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+</br>
 
 ## Background
-<p>This is an interactive <a href="https://shiny.rstudio.com/", target="_blank">Shiny R</a> App for exploring relationships among sample size, mean, variance, and effect size for two normal distributions. 
+<p>This is an interactive <a href="https://shiny.rstudio.com/", target="_blank">Shiny R</a> App for exploring relationships among sample size, mean, variance, and effect size for two normal distributions. Effect is calclulated using <a href="https://en.wikiversity.org/wiki/Cohen%27s_d" target = "_blank">Cohen's d</a>.
 </p>
 <p>
   <iframe src = "https://golnaz.shinyapps.io/effectsize/" , height = 750, width = 900>
