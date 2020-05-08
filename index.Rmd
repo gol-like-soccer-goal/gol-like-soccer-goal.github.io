@@ -27,6 +27,11 @@ After doing some research, I wasn't too happy with the interactive simulations I
 </br>
 </br>
 
+### <a href="covid.html">CDC Tweets about COVID-19 </a>
+As part of the <a href="http://qesoc.org/" target="_blank">International Society for Quantitative Ethnography</a> COVID-19 <a href="https://sites.google.com/wisc.edu/qe-covid-data-challenge" target="_blank">Data Challenge</a>, I creating a working example analyzing how the CDC communicated information about coronavirus through Twitter. 
+</br>
+</br>
+
 ### Contact
 Golnaz Arastoopour Irgens 
 </br>
