@@ -1,0 +1,10 @@
+name: avocado_app
+title:
+username:
+account: golnaz
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 702984
+bundleId: 1865448
+url: https://golnaz.shinyapps.io/avocado_app/
+when: 1549682247.21903

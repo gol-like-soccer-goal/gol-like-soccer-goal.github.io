@@ -43,7 +43,7 @@ library("reshape2")
 ```
 
 ```{r, include = FALSE}
-lyrics <- read_csv("/Users/gai7612/OneDrive/Documents/Data_Science_Project/pop music analysis/billboard_lyrics_1964-2015.csv")
+lyrics <- read_csv("/Users/golnazirgens/Box/Data Science Hobby/website/pop music analysis/billboard_lyrics_1964-2015.csv")
 ```
 
 

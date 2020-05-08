@@ -7,7 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library("tidyverse")
 library("tidytext")
-avo <- read_csv("/Users/gai7612/OneDrive/Documents/Data_Science_Project/avocados/avocado_app/avocados_conventional.csv")
+avo <- read_csv("/Users/golnazirgens/Box/Data Science Hobby/website/avocados/avocado_app/avocados_conventional.csv")
 ```
 
 </br>

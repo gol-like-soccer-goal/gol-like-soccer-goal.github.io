@@ -37,7 +37,7 @@ options(scipen=999)
 </br>
 
 ```{r, include = FALSE}
-tweets <- read_csv("/Users/golnazirgens/Desktop/cdctweetsforR.csv")
+tweets <- read_csv("/Users/golnazirgens/Box/Data Science Hobby/website/covid/cdctweetsforR.csv")
 ```
 
 This is a tibble (a quick look) at the dataset. All files can be found in my <a href="https://github.com/gol-like-soccer-goal/covid" targer="_blank">covid repository</a>.
@@ -204,7 +204,7 @@ tr:nth-child(even) {
 And developed a full set of keywords and regular expressions based on the definitions of the codes that were validated in nCoder. Not all codes passed the statistical threshold, so this is still a work in progress. 
 
 ```{r, include = FALSE}
-keywords <- read.csv("/Users/golnazirgens/Desktop/keywords.csv")
+keywords <- read.csv("/Users/golnazirgens/Box/Data Science Hobby/website/covid/keywords.csv")
 ```
 
 Below is a function I wrote for coding the data. It takes the keyword file as an input and if the tweet contains the keyword, it will place a 1 in that column and if the tweet does not contain the keyword, it will place a 0 in that column. 

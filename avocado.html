@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -70,9 +71,7 @@ h6 {
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -86,7 +85,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -96,6 +94,9 @@ img {
 }
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -111,7 +112,6 @@ body {
   padding-top: 69px;
   margin-top: -69px;
 }
-
 .section h2 {
   padding-top: 69px;
   margin-top: -69px;
@@ -131,6 +131,43 @@ body {
 .section h6 {
   padding-top: 69px;
   margin-top: -69px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -152,19 +189,73 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -189,6 +280,9 @@ $(document).ready(function () {
 </li>
 <li>
   <a href="effectsizesim.html">Effect Size Simulation</a>
+</li>
+<li>
+  <a href="covid.html">COVID-19</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -217,7 +311,7 @@ Avocados are everywhere lately. Almost every brunch menu has avocado toast. Many
 I have been wondering why this has been happening. I have a few guesses: government subsidies, improvements in agriculture, a more health concious population, economic benefits for central/south America. And I have also been wondering if it’s just me or if avocados have truly gained popularity and if so, what did that gain look like? </br>
 </p>
 <p>
-So, when I came across a dataset on <a href="https://tinyletter.com/data-is-plural/letters/data-is-plural-2018-09-26-edition", target="_blank">Avocado sales</a>, I had to take a look.
+So, when I came across a dataset on &lt;a href=“<a href="https://tinyletter.com/data-is-plural/letters/data-is-plural-2018-09-26-edition" class="uri">https://tinyletter.com/data-is-plural/letters/data-is-plural-2018-09-26-edition</a>”, target=&quot;_blank&quot;&gt;Avocado sales</a>, I had to take a look.
 </p>
 <p></br></p>
 </div>
@@ -240,17 +334,17 @@ Here is what the data look like
 ##  8 2015-02-22         1.02   29936730. 12628562. 11354282. 9.37e5
 ##  9 2015-03-01         0.97   32994014. 13282223. 13733124. 1.07e6
 ## 10 2015-03-08         1.02   30094699. 13013750. 10973973. 8.34e5
-## # ... with 187 more rows, and 5 more variables: `Total Bags` &lt;dbl&gt;, `Small
-## #   Bags` &lt;dbl&gt;, `Large Bags` &lt;dbl&gt;, `XLarge Bags` &lt;dbl&gt;, Year &lt;int&gt;</code></pre>
+## # … with 187 more rows, and 5 more variables: `Total Bags` &lt;dbl&gt;, `Small
+## #   Bags` &lt;dbl&gt;, `Large Bags` &lt;dbl&gt;, `XLarge Bags` &lt;dbl&gt;, Year &lt;dbl&gt;</code></pre>
 <p></br></p>
 </div>
 <div id="the-interactive-app" class="section level2">
 <h2>The Interactive App</h2>
 <p>
-And here is a simple interactive <a href="https://shiny.rstudio.com/", target="_blank">Shiny R</a> App for exploring linear relationships among price, volume, and types of avocados over time.
+And here is a simple interactive &lt;a href=“<a href="https://shiny.rstudio.com/" class="uri">https://shiny.rstudio.com/</a>”, target=&quot;_blank&quot;&gt;Shiny R</a> App for exploring linear relationships among price, volume, and types of avocados over time.
 </p>
 <p>
-<iframe src = "https://golnaz.shinyapps.io/avocado_app/" , height = 500, width = 900> </iframe>
+&lt;iframe src = “<a href="https://golnaz.shinyapps.io/avocado_app/" class="uri">https://golnaz.shinyapps.io/avocado_app/</a>” , height = 500, width = 900&gt; </iframe>
 </p>
 </div>
 
@@ -271,6 +365,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
