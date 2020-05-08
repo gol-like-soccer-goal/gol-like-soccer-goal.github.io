@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Covid-19</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 64px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h2 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h3 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h4 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h5 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h6 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Data Science is my Hobby</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="pop.html">Pop Music Analysis</a>
+</li>
+<li>
+  <a href="avocado.html">Avocado App</a>
+</li>
+<li>
+  <a href="effectsizesim.html">Effect Size Simulation</a>
+</li>
+<li>
+  <a href="covid.html">COVID-19</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Covid-19</h1>
+
+</div>
+
+
+<p></br></p>
+<div id="background" class="section level2">
+<h2>Background</h2>
+<p>
+I was on the International Society for Quantitative Ethnography (ISQE) COVID-19 Data Challenge organization committee. And to promote the data challenge, I created a working example for how Quantitative Ethnography can be used to analyze COVID-19 data and provide insights into how people are thinking about the global pandemic.
+</p>
+<p>
+I used a dataset of U.S. CDC tweets from Feb, March, and part of April 2020 that I downloaded from <a href="https://github.com/narcisoyu/Institional-and-news-media-tweet-dataset-for-COVID-19-social-science-research" target="_blank">narcisoyu’s github</a>. I added some variables and then coded the tweets for 6 themes, used the <a href="http://www.n-coder.org/" target="_blank">nCoder</a> webtool to validate the codes (thanks to Jais Brohinsky and Kamila Misiejuk), and used the <a href="http://www.epistemicnetwork.org/" target="_blank">Epistemic Network Analysis</a> webtool to visualize how the CDC’s information to the public changed as the global pandemic continued.
+</p>
+<p></br> ## Prepping the Data</p>
+<p>I used the following packages and removed sci notation (it was driving me crazy!).</p>
+<pre class="r"><code>library(tidyverse)
+library(tidytext)
+library(topicmodels)
+
+options(scipen=999)</code></pre>
+<p></br></p>
+<p>This is a tibble (a quick look) at the dataset. All files can be found in my <a href="https://github.com/gol-like-soccer-goal/covid" targer="_blank">covid repository</a>.</p>
+<pre class="r"><code>tweets</code></pre>
+<pre><code>## # A tibble: 234 x 37
+##    created_at Date  Week  hashtags media urls  favorite_count      id
+##    &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Sat Feb 0… 1-Feb week… coronav… http… http…            723 1.22e18
+##  2 Sat Feb 0… 1-Feb week… CDC 201… http… http…            424 1.22e18
+##  3 Sun Feb 0… 2-Feb week… HCPs co… http… http…            284 1.22e18
+##  4 Sun Feb 0… 2-Feb week… 2019nCo… http… http…            490 1.22e18
+##  5 Sun Feb 0… 2-Feb week… 2019nCo… http… http…            690 1.22e18
+##  6 Mon Feb 0… 3-Feb week… flu      http… http…            205 1.22e18
+##  7 Mon Feb 0… 3-Feb week… fluvacc… http… http…            439 1.22e18
+##  8 Tue Feb 0… 4-Feb week… &lt;NA&gt;     &lt;NA&gt;  &lt;NA&gt;               2 1.22e18
+##  9 Tue Feb 0… 4-Feb week… &lt;NA&gt;     &lt;NA&gt;  &lt;NA&gt;               1 1.22e18
+## 10 Tue Feb 0… 4-Feb week… Coronav… &lt;NA&gt;  &lt;NA&gt;               0 1.22e18
+## # … with 224 more rows, and 29 more variables:
+## #   in_reply_to_screen_name &lt;chr&gt;, in_reply_to_status_id &lt;dbl&gt;,
+## #   in_reply_to_user_id &lt;dbl&gt;, lang &lt;chr&gt;, place &lt;lgl&gt;,
+## #   possibly_sensitive &lt;lgl&gt;, retweet_count &lt;dbl&gt;, reweet_id &lt;dbl&gt;,
+## #   retweet_screen_name &lt;chr&gt;, source &lt;chr&gt;, text &lt;chr&gt;, tweet_url &lt;chr&gt;,
+## #   user_created_at &lt;chr&gt;, user_screen_name &lt;chr&gt;,
+## #   user_default_profile_image &lt;lgl&gt;, user_description &lt;chr&gt;,
+## #   user_favourites_count &lt;dbl&gt;, user_followers_count &lt;dbl&gt;,
+## #   user_friends_count &lt;dbl&gt;, user_listed_count &lt;dbl&gt;,
+## #   user_location &lt;chr&gt;, user_name &lt;chr&gt;, user_screen_name_1 &lt;chr&gt;,
+## #   user_statuses_count &lt;dbl&gt;, user_time_zone &lt;lgl&gt;, user_urls &lt;chr&gt;,
+## #   user_verified &lt;lgl&gt;, month &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
+<p></br> I added a year and month column</p>
+<pre class="r"><code>tweets &lt;- tweets %&gt;%
+  mutate(month = substring(created_at, 5, 7)) %&gt;%
+  mutate(year = substring(created_at, nchar(created_at)-3, nchar(created_at))) %&gt;%
+  filter(year == &quot;2020&quot;) %&gt;%
+  filter(month == &quot;Feb&quot; | month == &quot;Mar&quot; | month == &quot;Apr&quot;)</code></pre>
+<p></br> ## Coding the Data To explore the dataset beyond just reading the tweets, I tried word frequencies,</p>
+<pre class="r"><code>tweets.words &lt;- tweets %&gt;%
+  select(text) %&gt;%
+  unnest_tokens(word, text) %&gt;%
+  anti_join(stop_words) %&gt;%
+  filter(word != &quot;https&quot;) %&gt;%
+  filter(word != &quot;t.co&quot;) %&gt;%
+  filter(word != &quot;rt&quot;) %&gt;%
+  filter(word != &quot;cdc&quot;) %&gt;%
+  filter(word != &quot;covid19&quot;) %&gt;%
+  filter(word != &quot;covid&quot;) %&gt;%
+  filter(word != &quot;coronavirus&quot;) %&gt;%
+  filter(word != &quot;amp&quot;) %&gt;%
+  count(word, sort = TRUE)
+
+tweets.words %&gt;%
+  top_n(15) %&gt;%
+  ggplot(aes(fct_reorder(word, n), n, fill = word)) +
+  geom_col(show.legend = FALSE) +
+  labs(x = &quot;word&quot;, y = &quot;frequency&quot;) +
+  coord_flip()</code></pre>
+<p><img src="covid_files/figure-html/unnamed-chunk-4-1.png" width="672" /> </br> bigrams,</p>
+<pre class="r"><code>tweets.bi &lt;- tweets %&gt;%
+  select(text) %&gt;%
+  unnest_tokens(bigram, text, token=&quot;ngrams&quot;, n = 2) %&gt;%
+  count(bigram, sort = TRUE)
+
+tweets.bi %&gt;%
+  top_n(15) %&gt;%
+  ggplot(aes(fct_reorder(bigram, n), n, fill = bigram)) +
+  geom_col(show.legend = FALSE) +
+  labs(x = &quot;bigram&quot;, y = &quot;frequency&quot;) +
+  coord_flip()</code></pre>
+<p><img src="covid_files/figure-html/unnamed-chunk-5-1.png" width="672" /> </br> and even topic modeling with LDA.</p>
+<pre class="r"><code>##create document term matrix
+tweets.dtm &lt;- tweets %&gt;%
+  select(text,id) %&gt;%
+  unnest_tokens(word, text) %&gt;%
+  anti_join(stop_words) %&gt;%
+  count(word, id, sort = TRUE) %&gt;%
+  ungroup() %&gt;%
+  filter(word != &quot;https&quot;) %&gt;%
+  filter(word != &quot;t.co&quot;) %&gt;%
+  filter(word != &quot;rt&quot;) %&gt;%
+  filter(word != &quot;cdc&quot;) %&gt;%
+  filter(word != &quot;covid19&quot;) %&gt;%
+  filter(word != &quot;covid&quot;) %&gt;%
+  filter(word != &quot;coronavirus&quot;) %&gt;%
+  cast_dtm(id, word, n)
+
+##take out tweets with no terms so LDA doesn&#39;t fail
+rowTotals &lt;- apply(tweets.dtm, 1, sum)
+tweets.dtm &lt;- tweets.dtm[rowTotals &gt; 0 , ]
+
+##run LDA
+tweets.lda &lt;- LDA(tweets.dtm, k = 10, control = list(seed = 1234))
+tweets.lda.tidy &lt;- tidy(tweets.lda)
+
+##Show top words in each topic
+tweets.lda.top &lt;- tweets.lda.tidy %&gt;%
+  group_by(topic) %&gt;%
+  top_n(10, beta) %&gt;%
+  arrange(topic, -beta) %&gt;%
+  ungroup()
+
+##Plot top words in each topic
+tweets.lda.top %&gt;%
+  mutate(term = reorder(term,topic)) %&gt;%
+  ggplot(aes(fct_reorder(term, beta), beta, fill = topic)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = &quot;free&quot;) +
+  coord_flip()</code></pre>
+<p><img src="covid_files/figure-html/unnamed-chunk-6-1.png" width="672" /> </br> </br> It wasn’t very helpful, but it did point out the most frequently used words and phrases. So, I went back to the data with this information to find common themes in the CDC tweets. </br> ## Coding the Data</p>
+<p></br> I developed five codes:</p>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<table>
+<tr>
+<th>
+Code
+</th>
+<th>
+Definition
+</th>
+<th>
+Sample Keywords
+</th>
+</tr>
+<tr>
+<td>
+People
+</td>
+<td>
+Referring to different populations of people affected by covid-19
+</td>
+<td>
+People, child, adult, elderly
+</td>
+</tr>
+<tr>
+<td>
+Positive Action
+</td>
+<td>
+Referring to an action that people can take to cope with or stay safe from covid-19
+</td>
+<td>
+Social distanc, #socialdist, reduce, disinfect
+</td>
+</tr>
+<tr>
+<td>
+Infection and Spread
+</td>
+<td>
+Referring to the spread, transmission of or exposure to covid-19. Also refers to explicitly referring to someone who is sick with the virus or may potentially become sick with covid-19.
+</td>
+<td>
+Spread, close contact, widespread, transmission
+</td>
+</tr>
+<tr>
+<td>
+Alarm
+</td>
+<td>
+Using language that conveys complications, those who are at a more serious risk, death, or sense of alarm related to covid-19.
+</td>
+<td>
+Risk, death, emergency, threat, expose, severe, complication, serious
+</td>
+</tr>
+<tr>
+<td>
+Global
+</td>
+<td>
+Referring to other countries or global effects of covid-19 beyond the U.S.
+</td>
+<td>
+China, traveler, global, world, Korea, Japan, Congo
+</td>
+</tr>
+</table>
+<p></br> And developed a full set of keywords and regular expressions based on the definitions of the codes that were validated in nCoder. Not all codes passed the statistical threshold, so this is still a work in progress.</p>
+<p>Below is a function I wrote for coding the data. It takes the keyword file as an input and if the tweet contains the keyword, it will place a 1 in that column and if the tweet does not contain the keyword, it will place a 0 in that column.</p>
+<pre class="r"><code>##this is a function for coding
+code = function(keywordtable, colnum, content) {
+  
+  code &lt;- unlist(paste(na.omit(keywordtable[,colnum]), collapse = &quot;|&quot;))
+  out = ifelse(grepl(code, content, ignore.case = TRUE, perl = TRUE),1,0)
+  return (out)
+  
+}
+
+##code tweets
+tweets$people &lt;- code(keywords, 1, tweets$text)
+tweets$spread &lt;- code(keywords, 2, tweets$text)
+tweets$alarm &lt;- code(keywords, 3, tweets$text)
+tweets$positive.action &lt;- code(keywords, 4, tweets$text)
+tweets$global &lt;- code(keywords, 5, tweets$text)</code></pre>
+</div>
+<div id="visualizing-the-data" class="section level2">
+<h2>Visualizing the Data</h2>
+</br> After the data was coded, I exported the file as a csv and imported it into the ENA webtool.</br>
+<p>
+Stanzas (segmentations for how co-occurrences are counted) were by date. Sometimes there was one tweet on a date and sometimes there were several tweets. Units (individual networks) were accumulated by week and then grouped into red, blue, and purple networks by month.
+</p>
+<p>
+The figure below compares the average networks for Feb and Apr and shows the average centroids for all three months. The differences are not significant if we run statistics on the number of weeks (due to small sample size/low power), but the effect is relatively large (r = 1.0 on x-axis). Future analyses could examine statistics on a smaller grain size of networks, such as date or single tweets, to increase sample size.
+</p>
+<p><img src="covid1.png" alt="ENA difference network between February and April" width="70%" height="70%" class="center"></p>
+<p>
+There are differences between February, March, and April in terms of how the CDC tweets were conveying information to the public, and the mean centroids show a trajectory across the space. In February, tweets focused more on people involved in the global spread of COVID-19. In March, tweets focused more on what positive actions people could take to cope with and reduce spread of COVID-19. April continued to focus on positive actions to reduce spread but included more alarming tweets about the severity and deaths.
+</p>
+<p>
+Below are examples of tweets from each month that match with the interpretation above.
+</p>
+</br>
+<table>
+<tr>
+<th>
+Example of Feb 21 (week 3) Tweet
+</th>
+<th>
+There are now 2 categories of #COVID19 cases in the US: 1) Cases detected through the domestic public health systems, and 2) cases among people who were repatriated via <span class="citation">@StateDept</span> flights from Wuhan (China) &amp; from the Diamond Princess cruise ship (Japan). <a href="https://t.co/1ifchVQ9jm" class="uri">https://t.co/1ifchVQ9jm</a>.
+</th>
+</tr>
+<tr>
+<th>
+Example of March 17 (week 7) Tweet
+</th>
+<th>
+While #socialdistancing for #COVID19, take the time to check in on friends and family to see how they are doing. Set up a daily phone or video call to touch base and share the best and most challenging parts of the day. #TogetherApart <a href="https://t.co/KyBmehvGcY" class="uri">https://t.co/KyBmehvGcY</a> <a href="https://t.co/rN1RmYS9i0" class="uri">https://t.co/rN1RmYS9i0</a>
+</th>
+</tr>
+<tr>
+<th>
+Example of April 14 (week 11) Tweet
+</th>
+<th>
+Did you know that adults 65 and older and those with an underlying medical condition are at higher risk for getting seriously ill from #coronavirus? Learn how to slow the spread of coronavirus and protect your loved ones at <a href="https://t.co/iH2iReYrBq" class="uri">https://t.co/iH2iReYrBq</a>. #COVID19 <a href="https://t.co/1KnsDJSJY3" class="uri">https://t.co/1KnsDJSJY3</a>
+</th>
+</tr>
+</table>
+<p>
+The figure below breaks out the networks by each week. February includes weeks 1 - 4, March includes weeks 5 - 9, April includes 9 - 11. This visualization shows more detailed trajectories on how the CDC tweets’ focus changed week by week. For example, in week 9 at the end of March, those tweets look more similar to the February tweets that had a global/travel focus. This was because many additional travel advisories went into effect during this week by the U.S. government.
+</p>
+<p><img src="covid2.png" alt="centroid representation of Feb, Mar, and Apr" width="70%" height="70%" class="center"></p>
+<p>
+Additional possible analyses include exploring metadata from this dataset such as retweets, favorited/popular tweets, or media included in tweets. Also, end of April tweets were not included in this analysis and are now available for download and could be added. In addition, this tweet data could be correlated with metadata from other sources such as general tweets with #Covid19 hashtag, containment and mitigation measures, number of infections, etc.
+</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

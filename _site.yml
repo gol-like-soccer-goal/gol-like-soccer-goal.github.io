@@ -9,6 +9,8 @@ navbar:
       href: avocado.html
     - text: "Effect Size Simulation"
       href: effectsizesim.html
+    - text: "COVID-19"
+      href: covid.html
 
 output:
   html_document:
